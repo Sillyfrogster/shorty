@@ -1,0 +1,23 @@
+{
+  "name": "shorty",
+  "version": "0.1.0",
+  "description": "link shortener",
+  "main": "start.js",
+  "scripts": {
+    "dev": "node start.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sillyfrogster/shorty.git"
+  },
+  "author": "Sillyfrogster",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Sillyfrogster/shorty/issues"
+  },
+  "homepage": "https://github.com/Sillyfrogster/shorty#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
