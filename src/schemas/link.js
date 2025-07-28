@@ -1,0 +1,5 @@
+export var linkSchema = `CREATE TABLE IF NOT EXISTS links(
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+url TEXT,
+code TEXt
+)`

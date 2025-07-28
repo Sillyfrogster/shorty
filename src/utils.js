@@ -7,7 +7,7 @@ const URLSafeArray = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456
  * @param {*} max 
  * @returns
  */
-function createUniqueLink(min, max) {
+export function createUniqueLink(min, max) {
     const length = Math.floor(Math.random() * (max - min) + 1) + min;
     let result = '';
     for(var i = 0; i < length; i++) {

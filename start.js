@@ -1,4 +1,4 @@
-const shorty = require('./src/app');
-const server = new shorty.Shorty();
+import { Shorty } from './src/app.js';
+const server = new Shorty();
 
 server.run();

@@ -4,9 +4,10 @@
   "description": "link shortener",
   "main": "start.js",
   "scripts": {
-    "dev": "node start.js",
+    "dev": "bun --hot start.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Sillyfrogster/shorty.git"
@@ -18,6 +19,7 @@
   },
   "homepage": "https://github.com/Sillyfrogster/shorty#readme",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "sqlite3": "^5.1.7"
   }
 }
