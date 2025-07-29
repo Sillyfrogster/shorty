@@ -16,3 +16,14 @@ export function createUniqueLink(min, max) {
     }
     return result;
 }
+
+/**
+ * Verifies a given url.
+ * 
+ * @param {string} url - The url to verify.
+ * @returns {bool} Verification result
+ */
+export function verifyURL(url) {
+    let urlRegex = /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/
+    return urlRegex.test(url);
+}
