@@ -1,3 +1,4 @@
+import { checkForCode } from "./databases/link";
 
 const URLSafeArray = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890$-_.+!*'()";
 
@@ -7,12 +8,18 @@ const URLSafeArray = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456
  * @param {*} max 
  * @returns
  */
-export function createUniqueLink(min, max) {
+export async function createUniqueLink(min, max) {
     const length = Math.floor(Math.random() * (max - min) + 1) + min;
     let result = '';
     for(var i = 0; i < length; i++) {
         const code = URLSafeArray.charAt(Math.floor(Math.random() * URLSafeArray.length));
         result += code;
+    }
+
+    let exists = await checkForCode(result);
+    if(exists) {
+        console.log("Code already exists within the database. Generating new code.");
+        return createUniqueLink(5, 10);
     }
     return result;
 }
