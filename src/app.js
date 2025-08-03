@@ -1,9 +1,13 @@
 import express from "express";
 import linkRoutes from "./routes/link.js"
+import { ShortyLogger } from "./logger/index.js";
+
 const app = express();
 
 export class Shorty {
-  constructor() {}
+  constructor() {
+    this.logger = new ShortyLogger(process.env);
+  }
 
   run() {
     app.use(express.json()); 
@@ -13,7 +17,7 @@ export class Shorty {
     });
     app.use('/', linkRoutes)
     app.listen(3000, () => {
-      console.log(`Listening on port: 3000`);
+      this.logger.log(`Listening on port: 3000`);
     });
 
   }
