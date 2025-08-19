@@ -24,7 +24,7 @@ export async function createUniqueLink(min, max) {
     console.log(
       "Code already exists within the database. Generating new code."
     );
-    return createUniqueLink(5, 10);
+    return createUniqueLink(min, max);
   }
   return result;
 }
@@ -38,6 +38,5 @@ export async function createUniqueLink(min, max) {
 export function verifyURL(url) {
   let urlRegex =
     /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/;
-  //let testURL = new URL(url); For now at least.
-  return urlRegex.test(url);
+  return urlRegex.test(url) && new URL(url) ? true : false;
 }

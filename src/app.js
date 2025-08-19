@@ -1,23 +1,18 @@
 import express from "express";
+import helmet from "helmet";
 import linkRoutes from "./routes/link.js"
-import { ShortyLogger } from "./logger/index.js";
 
 const app = express();
 
 export class Shorty {
-  constructor() {
-    this.logger = new ShortyLogger(process.env);
-  }
+  constructor() {}
 
   run() {
     app.use(express.json()); 
-    app.use((req, res, next) => {
-      res.setHeader("Content-Security-Policy", "default-src 'self'; script-src 'self'");
-      next();
-    });
+    app.use(helmet());
     app.use('/', linkRoutes)
-    app.listen(3000, () => {
-      this.logger.log(`Listening on port: 3000`);
+    app.listen(process.env.PORT, () => {
+      console.info(`Listening on port: ${process.env.PORT}`);
     });
 
   }

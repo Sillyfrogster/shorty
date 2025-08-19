@@ -1,8 +1,9 @@
 import express from "express";
 import { createUniqueLink } from "../utils.js";
 import { verifyURL } from "../utils.js";
-import { getURL, insertLink } from "../databases/link.js";
+import { getURL, insertLink, updateEngagements } from "../databases/link.js";
 const router = express.Router();
+
 
 router.post("/link", async (req, res) => {
   if (!req.body) {
@@ -32,7 +33,9 @@ router.get("/:code", async (req, res) => {
   if (!url) {
     return res.status(404).json({ Error: "Code not valid." });
   }
-  res.status(200).redirect(url);
+  
+  await updateEngagements(req.params.code).catch((err) => console.log(err));
+  res.status(301).redirect(url);
   return;
 });
 export default router;
